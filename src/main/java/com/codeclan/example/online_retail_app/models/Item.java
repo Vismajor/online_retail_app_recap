@@ -1,5 +1,6 @@
 package com.codeclan.example.online_retail_app.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
@@ -21,10 +22,10 @@ public class Item {
     private String type;
 
     @ManyToMany
-    @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
     @JoinTable(
-            joinColumns = {@JoinColumn(name = "item_id", nullable = false, updatable = false)},
-            inverseJoinColumns = {@JoinColumn(name = "user_id", nullable = false, updatable = false)}
+            name = "users_items",
+            joinColumns = {@JoinColumn(name = "item_id")},
+            inverseJoinColumns = {@JoinColumn(name = "retail_user_id")}
     )
     private List<User> users;
 
@@ -70,5 +71,6 @@ public class Item {
 
     public void addUser(User user) {
         this.users.add(user);
+//        user.addItem(this);
     }
 }

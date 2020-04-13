@@ -1,14 +1,11 @@
 package com.codeclan.example.online_retail_app.models;
 
-
-import org.hibernate.annotations.Cascade;
-
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name="users")
+@Table(name="retail_users")
 public class User {
 
     @Id
@@ -20,10 +17,10 @@ public class User {
 
 
     @ManyToMany
-    @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
     @JoinTable(
-            joinColumns = {@JoinColumn(name = "user_id", nullable = false, updatable = false)},
-            inverseJoinColumns = {@JoinColumn(name = "item_id", nullable = false, updatable = false)}
+            name = "users_items",
+            joinColumns = {@JoinColumn(name = "retail_user_id")},
+            inverseJoinColumns = {@JoinColumn(name = "item_id")}
     )
     private List<Item> items;
 
@@ -60,5 +57,6 @@ public class User {
 
     public void addItem(Item item) {
         this.items.add(item);
+//        item.addUser(this);
     }
 }

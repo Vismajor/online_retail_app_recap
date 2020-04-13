@@ -40,27 +40,14 @@ public class DataLoader implements ApplicationRunner {
         itemRepository.save(item4);
 
         user1.addItem(item1);
-        item1.addUser(user1);
         user1.addItem(item2);
-        item2.addUser(user1);
         user1.addItem(item3);
-        item3.addUser(user1);
         userRepository.save(user1);
 
         user2.addItem(item3);
-        item3.addUser(user2);
         user2.addItem(item4);
-        item4.addUser(user2);
         user2.addItem(item2);
-        item2.addUser(user2);
         userRepository.save(user2);
-
-        itemRepository.save(item1);
-        itemRepository.save(item2);
-        itemRepository.save(item3);
-        itemRepository.save(item4);
-
-
 
     }
 

@@ -5,16 +5,16 @@ import com.codeclan.example.online_retail_app.models.User;
 import com.codeclan.example.online_retail_app.repositories.ItemRepository;
 import com.codeclan.example.online_retail_app.repositories.UserRepository;
 import org.junit.jupiter.api.Test;
-import org.junit.runner.RunWith;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.Assert.assertEquals;
 
-@RunWith(SpringRunner.class)
+
+//@RunWith(SpringRunner.class)
 @SpringBootTest
 class OnlineRetailAppApplicationTests {
 
@@ -35,10 +35,17 @@ class OnlineRetailAppApplicationTests {
 //	}
 
 	@Test
-	public void canFindItemsBoughtByUser(){
+	public void canFindItemsForUser(){
 		User user = userRepository.findByName("John");
 		List<Item> boughtItems = itemRepository.findByUsersId(user.getId());
 		assertEquals(3, boughtItems.size());
 	}
+
+//	@Test
+//	public void canFindUsersForItem(){
+//		Item item = itemRepository.findByName("John");
+//		List<Item> boughtItems = itemRepository.findByUsersId(user.getId());
+//		assertEquals(3, boughtItems.size());
+//	}
 
 }
